@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watsoncloudant
+  labels:
+    app: watsoncloudant
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: watsoncloudant
+  template:
+    metadata:
+      labels:
+        app: watsoncloudant
+    spec:
+      containers:
+      - name: watsoncloudant
+        image: us.icr.io/talns/watson_cloudant_microservice
+        ports:
+        - name: http-server
+          containerPort: 8080
+        env:
+        - name: VR_API
+          valueFrom:
+            configMapKeyRef:
+              name: env-var-cm
+              key: VR_API
+        - name: CLOUDANT_URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-var-cm
+              key: CLOUDANT_URL
