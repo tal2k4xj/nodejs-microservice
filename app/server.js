@@ -9,8 +9,8 @@ const { IamAuthenticator } = require('ibm-watson/auth');
 var app = express();
 var port = process.env.PORT || 8080;
 
-var VR_API = process.env.VR_API || "7r8B80NxPmqdrOnLgQk8HLjyflXpmqoq4E1j1Vgb51JZ";
-var CLOUDANT_URL = process.env.CLOUDANT_URL || "https://76b7f8d6-d5e1-4991-975f-12a579a24bc1-bluemix:a87b291f19c8c1a2f963e0ad56ff368fd46925e65fbeee4646bac2f69bc41989@76b7f8d6-d5e1-4991-975f-12a579a24bc1-bluemix.cloudantnosqldb.appdomain.cloud";
+var VR_API = process.env.VR_API || "";
+var CLOUDANT_URL = process.env.CLOUDANT_URL || "";
 
 // init express app
 app.use(bodyParser.urlencoded({

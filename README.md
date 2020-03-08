@@ -1,29 +1,27 @@
 # prerequisite
 
-1) Install Docker desktop : https://docs.docker.com/install/
+1) Register IBM Cloud: https://ibm.biz/BdqrvA
+
+2) Install Docker desktop: https://docs.docker.com/install/
 
    Or 
    
    follow this guide to use Virtualbox: https://itsfoss.com/install-linux-in-virtualbox/
 
-2) install node & npm : https://www.npmjs.com/get-npm
+3) install node & npm: https://www.npmjs.com/get-npm
 
-3) install ibmcloud cli :
+4) install ibmcloud cli: https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt
    
-   For Mac & Linux run this command: 
-   ```
-   curl -sL https://ibm.biz/idt-installer | bash
-   ```
-   
-   For Windows™ 10 Pro, run the following command as an administrator: (Right-click the Windows™ PowerShell icon, and select Run as administrator.)
-   ```
-   [Net.ServicePointManager]::SecurityProtocol = "Tls12, Tls11, Tls, Ssl3"; iex(New-Object Net.WebClient).DownloadString('https://ibm.biz/idt-win-installer')
-   ```
-   
+# How to create a Microservice
+
+In this workshop we will go through the process of creating a microservice using the right tools and technologies.
+We will build a NodeJS application that connected to two other Cloud services (Watson Visual Recognition and Cloudant).
+The goal of this workshop is to help developers understand how to use the right tools on IBM Cloud and leverage them to build better microservices.
+
 # clone repo
 
 ```
-git clone ...
+git clone https://github.com/tal2k4xj/nodejs-microservice.git
 ```
 
 # build on localhost
