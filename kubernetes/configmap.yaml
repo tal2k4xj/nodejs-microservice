@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: env-var-cm
 data:
-    VR_API: aaa
-    CLOUDANT_URL: aaa
+    VR_API: INSERT_VR_API_KEY
+    CLOUDANT_URL: INSERT_CLOUDANT_URL

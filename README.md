@@ -27,6 +27,8 @@ git clone https://github.com/tal2k4xj/nodejs-microservice.git
 # build on localhost
 
 ```
+cd nodejs-microservice/app
+
 npm install
 
 npm start
@@ -35,7 +37,7 @@ npm start
 # build image using Dockerfile
 
 ```
-docker build . -t watson_cloudant_microservice
+docker build  -t watson_cloudant_microservice . 
 
 docker run -d -p 8080:8080 watson_cloudant_microservice
 ```
@@ -50,9 +52,13 @@ Connect to k8s cluster with the instuctions under "Access" tab on the cluster pa
 Change the deployment.yaml with the right namespace following the namespace in the container registry
 
 ```
+cd ../kubernetes/
+
 kubectl apply -f deployment.yaml
 
 kubectl apply -f service.yaml
+
+kubectl apply -f configmap.yaml
 ```
 
 # extra

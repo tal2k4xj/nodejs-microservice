@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var dotenv = require('custom-env').env()
 var Cloudant = require('@cloudant/cloudant');
 const fileupload = require('express-fileupload')
 const VisualRecognitionV3 = require('ibm-watson/visual-recognition/v3');

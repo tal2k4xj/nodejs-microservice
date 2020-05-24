@@ -1,16 +1,17 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var dotenv = require('custom-env').env()
 var Cloudant = require('@cloudant/cloudant');
 const fileupload = require('express-fileupload')
 const VisualRecognitionV3 = require('ibm-watson/visual-recognition/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT;
 
-var VR_API = process.env.VR_API || "";
-var CLOUDANT_URL = process.env.CLOUDANT_URL || "";
+var VR_API = process.env.VR_API;
+var CLOUDANT_URL = process.env.CLOUDANT_URL;
 
 // init express app
 app.use(bodyParser.urlencoded({
