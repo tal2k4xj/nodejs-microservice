@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: watsoncloudant
-        image: us.icr.io/talns/watson_cloudant_microservice
+        image: us.icr.io/<my_namespace>/watson_cloudant_microservice
         ports:
         - name: http-server
           containerPort: 8080

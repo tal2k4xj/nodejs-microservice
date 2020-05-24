@@ -47,12 +47,20 @@ docker run -d -p 8080:8080 watson_cloudant_microservice
 Follow this guide to push image to container registry on IBM Cloud :
 https://cloud.ibm.com/kubernetes/registry/main/start
 
-Connect to k8s cluster with the instuctions under "Access" tab on the cluster page
+Connect to k8s cluster with the instuctions under "Access" tab on the cluster page and create namespace.
 
 Change the deployment.yaml with the right namespace following the namespace in the container registry
 
 ```
 cd ../kubernetes/
+
+docker build  -t watson_cloudant_microservice . 
+
+docker tag watson_cloudant_microservice us.icr.io/<my_namespace>/watson_cloudant_microservice
+
+docker push us.icr.io/<my_namespace>/watson_cloudant_microservice
+
+ibmcloud cr image-list
 
 kubectl apply -f deployment.yaml
 
