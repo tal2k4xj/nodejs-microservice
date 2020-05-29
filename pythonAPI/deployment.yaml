@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonapi
+  labels:
+    app: pythonapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pythonapi
+  template:
+    metadata:
+      labels:
+        app: pythonapi
+    spec:
+      containers:
+      - name: pythonapi
+        image: us.icr.io/talnens/pythonapi
+        ports:
+        - name: http-server
+          containerPort: 80
