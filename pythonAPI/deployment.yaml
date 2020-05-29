@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pythonapi
-        image: us.icr.io/talnens/pythonapi
+        image: us.icr.io/<namespace>/pythonapi
         ports:
         - name: http-server
           containerPort: 80
