@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pythonapi
-        image: us.icr.io/<namespace>/pythonapi
+        image: tal2k4xj/pythonapi
         ports:
         - name: http-server
           containerPort: 80
