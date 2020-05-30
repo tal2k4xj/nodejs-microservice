@@ -69,6 +69,211 @@ kubectl apply -f service.yaml
 kubectl apply -f configmap.yaml
 ```
 
-# extra
+# Deploy nodejs from Docker Hub
 
-Monitoring, Networking, Logs, CI/CD, Istio, Helm, Configuration ...
+Before we start create Watson VR service and Cloudant service, copy credentials to use later.
+
+Create deployment yaml
+
+```
+mkdir nodejs
+
+cd nodejs
+
+nano deployment.yaml
+```
+
+Copy & Paste the yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watsoncloudant
+  labels:
+    app: watsoncloudant
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: watsoncloudant
+  template:
+    metadata:
+      labels:
+        app: watsoncloudant
+    spec:
+      containers:
+      - name: watsoncloudant
+        image: tal2k4xj/watson_cloudant_microservice
+        ports:
+        - name: http-server
+          containerPort: 8080
+        env:
+        - name: VR_API
+          valueFrom:
+            configMapKeyRef:
+              name: env-var-cm
+              key: VR_API
+        - name: CLOUDANT_URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-var-cm
+              key: CLOUDANT_URL
+```
+
+Create service yaml
+
+```
+nano service.yaml
+```
+
+Copy & Paste
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: watsoncloudant
+  labels:
+    app: watsoncloudant
+spec:
+  ports:
+  - port: 8080
+    targetPort: http-server
+  selector:
+    app: watsoncloudant
+  type: NodePort
+```
+
+Create configmap yaml
+
+```
+nano configmap.yaml
+```
+
+Copy & Paste
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-var-cm
+data:
+    VR_API: INSERT_VR_API_KEY
+    CLOUDANT_URL: INSERT_CLOUDANT_URL
+```
+
+Deploy all yamls
+
+```
+kubectl apply -f deployment.yaml
+
+kubectl apply -f service.yaml
+
+kubectl apply -f configmap.yaml
+```
+
+# Deploy python API from Docker Hub
+
+Create deployment yaml
+
+```
+cd ..
+
+mkdir python
+
+cd python
+
+nano deployment.yaml
+```
+
+Copy & Paste the yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonapi
+  labels:
+    app: pythonapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pythonapi
+  template:
+    metadata:
+      labels:
+        app: pythonapi
+    spec:
+      containers:
+      - name: pythonapi
+        image: tal2k4xj/pythonapi
+        ports:
+        - name: http-server
+          containerPort: 80
+```
+
+Create service yaml
+
+```
+nano service.yaml
+```
+
+Copy & Paste
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythonapi
+  labels:
+    app: pythonapi
+spec:
+  ports:
+  - port: 80
+    targetPort: http-server
+  selector:
+    app: pythonapi
+  type: NodePort
+```
+
+Deploy all yamls
+
+```
+kubectl apply -f deployment.yaml
+
+kubectl apply -f service.yaml
+```
+
+TEST python APIs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
